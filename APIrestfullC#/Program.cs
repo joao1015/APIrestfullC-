@@ -8,9 +8,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Registro do DbContext usando sua classe AppDbContext
+// Registro do DbContext usando PostgreSQL ao invés de Oracle
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))); // UseNpgsql para PostgreSQL
 
 var app = builder.Build();
 
